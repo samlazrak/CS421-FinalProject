@@ -1,5 +1,6 @@
 import { makeExecutableSchema } from "graphql-tools"
 import { merge } from "lodash"
+import user from "./user"
 
 const rootTypeDefs = `
   type Query {
@@ -23,7 +24,7 @@ const rootResolvers = {
   }
 }
 
-const typeDefs = [rootTypeDefs]
-const resolvers = merge(rootResolvers)
+const typeDefs = [rootTypeDefs, user.typeDefs]
+const resolvers = merge(rootResolvers, user.resolvers)
 
 export default makeExecutableSchema({ typeDefs, resolvers })
