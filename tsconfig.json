@@ -1,0 +1,17 @@
+{
+  "lib": ["esnext", "esnext.asynciterable"],
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "sourceMap": true,
+    "pretty": true,
+    "outDir": "./dist",
+    "baseUrl": "./src",
+    "target": "esnext"
+  },
+  "compileOnSave": true,
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
+}
