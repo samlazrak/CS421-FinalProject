@@ -1,4 +1,9 @@
-.vagrant
+.DS_Store
+.idea
 node_modules
-ubuntu-xenial-16.04-cloudimg-console.log
-coverage
+.vagrant
+ubuntu*
+data
+*.log
+dist
+.vscode

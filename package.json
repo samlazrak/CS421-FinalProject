@@ -1,43 +1,16 @@
 {
-  "name": "apollo-boilerplate",
-  "version": "1.0.0",
-  "description": "Boilerplate project for Apollo-Express GraphQL API's with TypeScript",
-  "main": "dist/index.js",
-  "author": "Sam Lazrak",
-  "license": "MIT",
   "scripts": {
-    "build": "tsc",
-    "dev": "ts-node ./src/index.ts",
-    "dev:watch": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'ts-node' src/index.ts",
-    "start": "nodemon ./dist/server.js",
-    "prod": "npm run build && npm run start",
-    "test": "jest --forceExit --coverage --verbose --detectOpenHandles"
-  },
-  "dependencies": {
-    "apollo-server-express": "^1.3.6",
-    "body-parser": "^1.18.3",
-    "cors": "^2.8.4",
-    "dotenv": "^6.0.0",
-    "express": "^4.16.3",
-    "graphql": "^0.13.2",
-    "graphql-tools": "^3.0.4",
-    "lodash": "^4.17.10"
+    "dev": "chmod +x install.sh && ./install.sh",
+    "dev:preinstall": "./node_modules/.bin/concurrently -p [{name}] --names \"BACKEND,CLIENT\" -c \"bgBlue.bold,bgCyan.bold\" \"chmod +x ./backend/backend-install.sh\" \"chmod +x ./frontend/frontend-install.sh\"",
+    "dev:install": "./node_modules/.bin/concurrently -p [{name}] --names \"BACKEND,CLIENT\" -c \"bgBlue.bold,bgCyan.bold\" \"/bin/bash ./backend/backend-install.sh\" \"/bin/bash ./frontend/frontend-install.sh\"",
+    "dev:start": "./node_modules/.bin/concurrently -p [{name}] --names \"BACKEND,CLIENT\" -c \"bgBlue.bold,bgCyan.bold\" \"/bin/bash ./backend/backend.sh\" \"/bin/bash ./frontend/frontend.sh\""
   },
   "devDependencies": {
-    "@types/dotenv": "^4.0.3",
-    "@types/express": "^4.16.0",
-    "@types/jest": "^23.1.2",
-    "@types/lodash": "^4.14.110",
-    "@types/node": "^10.3.6",
-    "@types/supertest": "^2.0.4",
+    "@angular/cli": "^6.0.8",
+    "babel-cli": "^6.26.0",
+    "babel-watch": "^2.0.7",
     "concurrently": "^3.6.0",
-    "jest": "^23.2.0",
-    "nodemon": "^1.17.5",
-    "supertest": "^3.1.0",
-    "ts-jest": "^22.4.6",
-    "ts-node": "^7.0.0",
-    "tslint": "^5.10.0",
-    "tslint-config-prettier": "^1.13.0",
-    "typescript": "^2.9.2"
+    "gulp": "^3.9.1",
+    "nodemon": "^1.17.5"
   }
 }

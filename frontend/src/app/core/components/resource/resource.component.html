@@ -1,0 +1,25 @@
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+  <div class="card border-primary mb-3">
+    <div class="card-body">
+      <h4 class="card-title">
+        {{ editForm.controls['id'].value }}
+      </h4>
+      <div class="card-text">
+        <div class="form-group">
+          <label for="title">title</label>
+          <input type="text" class="form-control" id="title" formControlName="title">
+        </div>
+        <div class="form-group">
+          <label for="content">content</label>
+          <input type="text" class="form-control" id="content" formControlName="content">
+        </div>
+        <div class="form-group">
+          <label for="content">comments</label>
+          <input type="text" class="form-control" id="comments" formControlName="comments">
+        </div>
+        <button type="submit" class="btn btn-outline-primary"
+          [disabled]="editForm.invalid">Save</button>
+      </div>
+    </div>
+  </div>
+</form>
