@@ -1,44 +1,59 @@
 <div class="container">
-    <form class="form-horizontal" role="form" style="border: 5px solid black; margin-top: 5px">
-        <div class="form-group">
-            <label for="firstName" class="col-sm-3 control-label">Full Name</label>
-            <div class="col-sm-9">
-                <input type="text" id="firstName" placeholder="Full Name" class="form-control" autofocus>
-                <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span>
-            </div>
+  <nav class="navbar navbar-dark bg-primary">
+          <span class="navbar-brand mb-0">
+            DevResources
+          </span>
+        </nav>
+</div>
+
+<div class="container">
+  <h1 style="margin-top: 30px; text-align: center">
+    <span class="label label-primary">Create Your Profile</span>
+  </h1>
+  <form class="form-horizontal" role="form" style="border: 5px solid black; margin-top: 5%;">
+    <div class="form-group">
+      <label for="firstName" class="col-sm-3 control-label">Full Name</label>
+      <div class="col-sm-9">
+        <input type="text" id="firstName" placeholder="Full Name" class="form-control" autofocus>
+        <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email" class="col-sm-3 control-label">Email</label>
+      <div class="col-sm-9">
+        <input type="email" id="email" placeholder="Email" class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password" class="col-sm-3 control-label">Password</label>
+      <div class="col-sm-9">
+        <input type="password" id="password" placeholder="Password" class="form-control">
+        <input type="password" id="password" placeholder="Confirm Password" class="form-control" style="margin-top: 5px">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="birthDate" class="col-sm-3 control-label">Date of Birth</label>
+      <div class="col-sm-9">
+        <input type="date" id="birthDate" class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-9 col-sm-offset-3">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox"> I accept
+            <a href="#">terms</a>
+          </label>
         </div>
-        <div class="form-group">
-            <label for="email" class="col-sm-3 control-label">Email</label>
-            <div class="col-sm-9">
-                <input type="email" id="email" placeholder="Email" class="form-control">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="password" class="col-sm-3 control-label">Password</label>
-            <div class="col-sm-9">
-                <input type="password" id="password" placeholder="Password" class="form-control">
-                <input type="password" id="password" placeholder="Confirm Password" class="form-control" style="margin-top: 5px">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="birthDate" class="col-sm-3 control-label">Date of Birth</label>
-            <div class="col-sm-9">
-                <input type="date" id="birthDate" class="form-control">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-9 col-sm-offset-3">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox"> I accept <a href="#">terms</a>
-                    </label>
-                </div>
-            </div>
-        </div> <!-- /.form-group -->
-        <div class="form-group">
-            <div class="col-sm-9 col-sm-offset-3">
-                <button type="submit" class="btn btn-primary btn-block">Register</button>
-            </div>
-        </div>
-    </form> <!-- /form -->
-</div> <!-- ./container -->
+      </div>
+    </div>
+    <!-- /.form-group -->
+    <div class="form-group">
+      <div class="col-sm-9 col-sm-offset-3">
+        <button type="submit" class="btn btn-primary btn-block">Register</button>
+      </div>
+    </div>
+  </form>
+  <!-- /form -->
+</div>
+<!-- ./container -->
