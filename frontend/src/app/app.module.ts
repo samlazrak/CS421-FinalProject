@@ -8,18 +8,20 @@ import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { ResourcesComponent } from './pages/resources/resources.component';
 import { ResourceComponent } from './core/components/resource/resource.component';
 import {PagesModule} from './pages/pages.module';
-import { CreateProfileComponent } from './create-profile/create-profile.component';
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ResourcesComponent,
     ResourceComponent,
-    CreateProfileComponent,
+    routingComponents
   ],
   imports: [
     BrowserModule,
