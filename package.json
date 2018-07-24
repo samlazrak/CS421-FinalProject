@@ -3,7 +3,24 @@
     "dev": "chmod +x install.sh && ./install.sh",
     "dev:preinstall": "./node_modules/.bin/concurrently -p [{name}] --names \"BACKEND,CLIENT\" -c \"bgBlue.bold,bgCyan.bold\" \"chmod +x ./backend/backend-install.sh\" \"chmod +x ./frontend/frontend-install.sh\"",
     "dev:install": "./node_modules/.bin/concurrently -p [{name}] --names \"BACKEND,CLIENT\" -c \"bgBlue.bold,bgCyan.bold\" \"/bin/bash ./backend/backend-install.sh\" \"/bin/bash ./frontend/frontend-install.sh\"",
-    "dev:start": "./node_modules/.bin/concurrently -p [{name}] --names \"BACKEND,CLIENT\" -c \"bgBlue.bold,bgCyan.bold\" \"/bin/bash ./backend/backend.sh\" \"/bin/bash ./frontend/frontend.sh\""
+    "dev:start": "./node_modules/.bin/concurrently -p [{name}] --names \"BACKEND,CLIENT\" -c \"bgBlue.bold,bgCyan.bold\" \"/bin/bash ./backend/backend.sh\" \"/bin/bash ./frontend/frontend.sh\"",
+    "build": "tsc",
+    "dev": "ts-node ./src/index.ts",
+    "dev:watch": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'ts-node' src/index.ts",
+    "start": "nodemon ./dist/server.js",
+    "prod": "npm run build && npm run start",
+    "test": "jest --forceExit --coverage --verbose --detectOpenHandles"
+  },
+  "dependencies": {
+    "apollo-server-express": "^1.3.6",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "graphql": "^0.13.2",
+    "graphql-tools": "^3.0.4",
+    "lodash": "^4.17.10",
+    "mysql2": "^1.5.3"
   },
   "devDependencies": {
     "@angular/cli": "^6.0.8",
