@@ -15,13 +15,10 @@ export const UserSchema = new Schema({
     type: String,
     required: "Enter a name"
   },
-<<<<<<< HEAD
-=======
   password: {
     type: String,
     required: true
   },
->>>>>>> sql
   created_date: {
     type: Date,
     default: Date.now

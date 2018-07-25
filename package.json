@@ -5,7 +5,6 @@
     "dev:install": "./node_modules/.bin/concurrently -p [{name}] --names \"BACKEND,CLIENT\" -c \"bgBlue.bold,bgCyan.bold\" \"/bin/bash ./backend/backend-install.sh\" \"/bin/bash ./frontend/frontend-install.sh\"",
     "dev:start": "./node_modules/.bin/concurrently -p [{name}] --names \"BACKEND,CLIENT\" -c \"bgBlue.bold,bgCyan.bold\" \"/bin/bash ./backend/backend.sh\" \"/bin/bash ./frontend/frontend.sh\"",
     "build": "tsc",
-    "dev": "ts-node ./src/index.ts",
     "dev:watch": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'ts-node' src/index.ts",
     "start": "nodemon ./dist/server.js",
     "prod": "npm run build && npm run start",
