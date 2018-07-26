@@ -33,6 +33,7 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+ubuntu-xenial-16.04-cloudimg-console.log
 
 # System Files
 .DS_Store
