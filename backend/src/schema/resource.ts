@@ -39,7 +39,7 @@ const resolvers = {
     }
   },
   Mutation: { 
-    update: (root, { id, title, content, comments }) => {
+    update: (root, { id, title, content, comments, votes }) => {
       const i = resources.findIndex(e => e.id === id);
       if (i >= 0) {
         const resource = resources[i];
@@ -47,7 +47,10 @@ const resolvers = {
         resource.title = title;
         resource.content = content;
         resource.comments = comments;
+        resource.votes = votes;
         return resource;
+
+        i + 1;
       }
       return null;
     }
