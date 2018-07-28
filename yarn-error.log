@@ -1,8 +1,8 @@
 Arguments: 
-  /usr/bin/node /usr/share/yarn/bin/yarn.js install
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.7.0/libexec/bin/yarn.js install
 
 PATH: 
-  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+  /Users/ryanhardin/CS421-FinalProject/node_modules/.bin:/Users/ryanhardin/.config/yarn/link/node_modules/.bin:/Users/ryanhardin/CS421-FinalProject/node_modules/.bin:/Users/ryanhardin/.config/yarn/link/node_modules/.bin:/usr/local/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/bin/node_modules/npm/bin/node-gyp-bin:/usr/local/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/Wireshark.app/Contents/MacOS:/Applications/Postgres.app/Contents/Versions/latest/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin
 
 Yarn version: 
   1.7.0
@@ -11,10 +11,10 @@ Node version:
   10.7.0
 
 Platform: 
-  linux x64
+  darwin x64
 
 Trace: 
-  Error: EPROTO: protocol error, symlink '../../../../semver/bin/semver' -> '/vagrant/node_modules/@angular/cli/node_modules/.bin/semver'
+  Error: EACCES: permission denied, unlink '/Users/ryanhardin/CS421-FinalProject/node_modules/.yarn-integrity'
 
 npm manifest: 
   {
