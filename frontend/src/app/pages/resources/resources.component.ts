@@ -11,7 +11,6 @@ import { ResourceService } from '../../core/services/resource.service';
 })
 export class ResourcesComponent implements OnInit {
   resources$: Observable<Resource[]>;
-
   constructor(
     private resourceService: ResourceService
   ) {
@@ -20,5 +19,8 @@ export class ResourcesComponent implements OnInit {
 
   ngOnInit() {
   }
+
+
+
 
 }
