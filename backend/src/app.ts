@@ -40,21 +40,14 @@ class App {
       })
     )
 
-    // this.app.post('/register', (req, res)=> {
-    //   const User = new User ({
-    //     firstName: req.body.firstName
-    //   })
-    // })
-
     this.app.use("/graphiql", graphiqlExpress({ endpointURL: "graphql" }))
   }
 
-  private mongoSetup() {
+  private mongoSetup(): void {
     mongoose.Promise = global.Promise
     mongoose.connect(this.mongoUrl)
     const connection = mongoose.connection
     connection.once('open', () => {
-      // console.log(`Connected to ${URL}`)
       console.log(`Connected to gql-devresources`)
     })
   }

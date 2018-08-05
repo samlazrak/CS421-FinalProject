@@ -1,7 +1,3 @@
-// import users from "../mocks/users"
-// import resources from "../mocks/resources"
-// import resource from "./resource";
-// import userModel from "../models/User"
 import {find, filter} from "lodash"
 const User = require('../models/User')
 

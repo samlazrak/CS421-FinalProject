@@ -1,7 +1,3 @@
-// import api from "../api/index"
-// import resources from "../mocks/resources"
-// import users from "../mocks/users"
-// import user from "./user";
 import { find, filter } from 'lodash'
 const Resource = require('../models/Resource')
 
@@ -22,10 +18,12 @@ const typeDefs = `
     newResource(
       title: String!, content: String!, comments: String, author: ID!
     ): Resource
+
+    update(
+      id: ID!, title: String!, content: String!, comments: String
+    ): Resource
   }
   `
-  // userId: User
-  // update(id: ID!, title: String!, content: String!, comments: String): Resource
 
 /* const resolvers = {
   Query: {
