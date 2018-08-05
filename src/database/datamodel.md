@@ -3,9 +3,11 @@ Data model:
 CRUD - Create Read Update Delete
 
 User:
-id: int
+id: string
 email: string
-name: string
+userName: string
+firstName: string
+lastName: string
 password: string
 
 optional: 
@@ -14,9 +16,9 @@ followed_categories: [Category]
 followed_resource: [Resource]
 favorites: [Resource]
 
-Resource:
+Resource (Post):
 title: string
-id: int
+id: string
 author: [User]
 img: string
 url: string
@@ -29,7 +31,8 @@ Comment:
 author: [User]
 description: string
 likes: int
-parent_id: int
+parent_id: string
+post_id: Resource
 
 Category: ( Javascript, Java, etc. )
 title: string

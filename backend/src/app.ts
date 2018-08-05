@@ -12,7 +12,7 @@ import schema from "./schema/index"
 class App {
   public app: express.Application
   public routes: Routes = new Routes()
-  public mongoUrl: string = "mongodb://localhost/devresources"
+  public mongoUrl: string = "mongodb://johnny:sasp8675@ds111562.mlab.com:11562/gql-devresources"
 
   constructor() {
     this.app = express()
@@ -39,17 +39,26 @@ class App {
         }
       })
     )
+
+    // this.app.post('/register', (req, res)=> {
+    //   const User = new User ({
+    //     firstName: req.body.firstName
+    //   })
+    // })
+
     this.app.use("/graphiql", graphiqlExpress({ endpointURL: "graphql" }))
   }
 
-  private mongoSetup(): void {
+  private mongoSetup() {
     mongoose.Promise = global.Promise
     mongoose.connect(this.mongoUrl)
-    const connection = mongoose.connection;
+    const connection = mongoose.connection
     connection.once('open', () => {
-      console.log(`Connected to ${URL}`);
-    });
+      // console.log(`Connected to ${URL}`)
+      console.log(`Connected to gql-devresources`)
+    })
   }
+  
 }
 
 export default new App().app
