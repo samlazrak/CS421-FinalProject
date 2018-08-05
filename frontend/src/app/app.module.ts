@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { ResourcesComponent } from './pages/resources/resources.component';
 import { ResourceComponent } from './core/components/resource/resource.component';
-import {PagesModule} from './pages/pages.module';
+import { PagesModule } from './pages/pages.module';
 
 
 

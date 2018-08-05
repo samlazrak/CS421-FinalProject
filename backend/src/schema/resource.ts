@@ -1,22 +1,29 @@
-import api from "../api/index"
-import resources from "../mocks/resources"
+import { find, filter } from 'lodash'
+const Resource = require('../models/Resource')
 
 const typeDefs = `
   type Resource {
-    id: String!
+    id: ID!
     title: String!
     content: String!
     comments: String
+    author: User
   }
   extend type Query {
     resources: [Resource]
-    resource(id: String!): Resource
+    resource(id: ID!): Resource
   }
-
+  
   extend type Mutation {
-    update(id: String!, title: String!, content: String!, comments: String): Resource
+    newResource(
+      title: String!, content: String!, comments: String, author: ID!
+    ): Resource
+
+    update(
+      id: ID!, title: String!, content: String!, comments: String
+    ): Resource
   }
-`
+  `
 
 /* const resolvers = {
   Query: {
@@ -27,34 +34,72 @@ const typeDefs = `
   }
 } */
 
-/* For testing */
 
 const resolvers = {
   Query: {
-    resources: (root) => {
-      return resources;
+    resources: (_) => {
+      return Resource.find({})
     },
-    resource: (root, { id }) => {
-      return resources.find(resource => resource.id === id);
+    resource: (_, args) => {
+      return Resource.findById(args.id)
+    },
+  },
+  User: {
+    resources: (_) => {
+      return Resource.find({ author: _.id })
     }
   },
   Mutation: { 
-    update: (root, { id, title, content, comments, votes }) => {
-      const i = resources.findIndex(e => e.id === id);
-      if (i >= 0) {
-        const resource = resources[i];
-        resource.id = id
-        resource.title = title;
-        resource.content = content;
-        resource.comments = comments;
-        resource.votes = votes;
-        return resource;
-
-        i + 1;
-      }
-      return null;
+    newResource(_, args){ 
+      let resource = new Resource({
+        title: args.title,
+        content: args.content,
+        comments: args.comments,
+        author: args.author
+      })
+      return resource.save()
     }
   }
-};
+}
 
 export default { typeDefs, resolvers }
+
+
+
+
+
+
+/*
+
+Unused/Testing/Reference Code:
+
+update: (root, { id, title, content, comments, votes }) => {
+  const i = resources.findIndex(e => e.id === id);
+    if (i >= 0) {
+      const resource = resources[i];
+      resource.id = id
+      resource.title = title;
+      resource.content = content;
+      resource.comments = comments;
+      resource.votes = votes;
+      return resource;
+    }
+    return null;
+    
+    resources: (_) => {
+  return resources;
+},
+
+user: (_, { id }) => find(users, { id: userId })
+},
+User: {
+  resources(userId) {
+    return filter(resources, { userId: userId.resources.id })
+  }
+  
+  User: {
+      resources: (_, args) => { 
+      return User.findById()
+    },
+
+  */
