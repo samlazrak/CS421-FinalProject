@@ -49,7 +49,7 @@ export class CreateProfileComponent implements OnInit {
             alert("Password Required")
         } 
         else {
-            console.log('There was an error: ', err)
+            console.log(err)
             alert("This user already exists. Please try again.")
 
             window.location.reload()

@@ -6,20 +6,21 @@ const typeDefs = `
     id: ID!
     title: String!
     content: String!
-    comments: String
-    author: User
+    comments: [Comment]
+    author: User!
   }
+
   extend type Query {
     resources: [Resource]
     resource(id: ID!): Resource
   }
   
   extend type Mutation {
-    newResource(
-      title: String!, content: String!, comments: String, author: ID!
+    newResource (
+      title: String!, content: String!, author: ID!
     ): Resource
 
-    update(
+    update (
       id: ID!, title: String!, content: String!, comments: String
     ): Resource
   }
@@ -47,6 +48,11 @@ const resolvers = {
   User: {
     resources: (_) => {
       return Resource.find({ author: _.id })
+    }
+  },
+  Comment: {
+    resource: (_) => {
+      return Resource.findById( _.resource )
     }
   },
   Mutation: { 

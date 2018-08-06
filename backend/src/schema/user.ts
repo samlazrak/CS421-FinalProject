@@ -10,6 +10,7 @@ const typeDefs = `
     lastName: String
     password: String!
     resources: [Resource]
+    comments: [Comment]
   }
   
   extend type Query {
@@ -38,10 +39,15 @@ const resolvers = {
   },
   User: {
     resources: (_) => { 
-      return User.findById(_.author)
+      return User.findById( _.author )
     }
   },
   Resource: {
+    author: (_) => {
+      return User.findById( _.author )
+    },
+  },
+  Comment: {
     author: (_) => {
       return User.findById( _.author )
     }

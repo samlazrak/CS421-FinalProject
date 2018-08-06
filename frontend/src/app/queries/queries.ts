@@ -12,6 +12,14 @@ export const allUsers = gql`
     }
 `
 
+export const User = gql`
+    query($userName: String!) {
+        user(userName: $userName) {
+            userName
+        }
+    }
+`
+
 // userName, email, firstName, lastName, password
 export const registerUser = gql`
     mutation registerUser(
