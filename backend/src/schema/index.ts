@@ -3,6 +3,7 @@ import { merge } from "lodash"
 import user from "./user"
 import resource from "./resource"
 
+
 const rootTypeDefs = `
   type Query {
     name: String

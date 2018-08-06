@@ -1,18 +1,21 @@
 const users = [
   {
-    id: 1,
+    id: "1",
     email: "butwaittheresmore@theresmore.com",
-    name: "Billy Mays"
+    firstName: "Billy",
+    lastName: "Mays"
   },
   {
-    id: 2,
+    id: "2",
     email: "slapchop@slapchop.com",
-    name: "Vince Offer"
+    firstName: "Vince",
+    lastName: "Offer"
   },
   {
-    id: 3,
+    id: "3",
     email: "happylittletrees@bobross.com",
-    name: "Bob Ross"
+    firstName: "Bob",
+    lastName: "Ross"
   }
 ]
 
