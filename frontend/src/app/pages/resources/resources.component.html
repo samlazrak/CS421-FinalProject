@@ -1,26 +1,33 @@
-<!-- <button type="button" class="btn btn-primary" (click)="show()">Toggle Form!</button>
-
-<form id="form1">
-  <b>First Name:</b> <input type="text" name="firstName">
-  <b>Last Name: </b><input type="text" name="lastName">
-   <button type="button" id="submit">Submit</button>
-</form> -->
-
 <div class="container">
   <div class="row">
-    <div class="col col-sm-2">
-          <!-- <img src="https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwi3-tHEoNHcAhXE6lMKHadWBjgQjRx6BAgBEAU&url=https%3A%2F%2Fwww.iconfinder.com%2Ficons%2F745386%2Favatar_profile_profile_avatar_user_user_avatar_user_profile_icon&psig=AOvVaw2L_4gDTg1KX2-purgN3Kd0&ust=1533398453132784" class="rounded"> -->
-    </div>
-    <div class="col col-lg-14">
-      <div class="card">
-        <div class="card-header">
-          Featured
+
+    <div class="col-md-8" id="postResource">
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <input type="text" class="form-control" placeholder="Make a post">
+                    <div class="pull-right">
+                      <button type="button" class="btn btn-success" style="padding: 5px;" (click)='newPanel()'> Share </button>
+                    </div>
+
         </div>
-        <div class="card-body">
-          <div>
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="panel-footer">
+          <div class="btn-group">
+            <button type="button" class="btn btn-link btn-icon">
+              <i class="fa fa-map-marker"></i>
+            </button>
+            <button type="button" class="btn btn-link btn-icon">
+              <i class="fa fa-users"></i>
+            </button>
+            <button type="button" class="btn btn-link btn-icon">
+              <i class="fa fa-camera"></i>
+            </button>
+            <button type="button" class="btn btn-link btn-icon">
+              <i class="fa fa-video-camera"></i>
+            </button>
+          <!-- </div>
+
+          <div class="pull-right"> -->
           </div>
         </div>
       </div>
