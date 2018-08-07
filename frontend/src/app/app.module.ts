@@ -11,15 +11,11 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { ResourcesComponent } from './pages/resources/resources.component';
 import { ResourceComponent } from './core/components/resource/resource.component';
-import {PagesModule} from './pages/pages.module';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { PagesModule } from './pages/pages.module';
+import { AboutComponent } from './pages/about/about.component';
 
-let routes = [
-    { path: "", redirectTo: "/login", pathMatch: "full" },
-    { path: "login", component: LoginComponent },
-    { path: "register", component: RegisterComponent }
-  ];
+
+
 
 @NgModule({
   declarations: [
@@ -27,8 +23,7 @@ let routes = [
     ResourcesComponent,
     ResourceComponent,
     routingComponents,
-    LoginComponent,
-    RegisterComponent
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -39,10 +34,7 @@ let routes = [
     ApolloModule,
     HttpLinkModule,
     AppRoutingModule,
-    PagesModule,
-    HTTPModule,
-    RouterModule,
-    RouterModule.forRoot(routes0
+    PagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
