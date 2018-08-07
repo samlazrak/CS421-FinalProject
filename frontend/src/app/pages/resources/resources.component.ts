@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-
+import { Apollo } from 'apollo-angular';
 import { Resource } from '../../typeDefs/typedefs';
 import { ResourceService } from '../../core/services/resource.service';
+
+import { allResources, allResourcesResponse } from '../../queries/queries'
 
 @Component({
   selector: 'app-resources',
@@ -11,11 +13,16 @@ import { ResourceService } from '../../core/services/resource.service';
 })
 export class ResourcesComponent implements OnInit {
   public post = "";
-  public titlePost = "";
+  public titlePost = "";  
   public link = "";
 
   resources$: Observable<Resource[]>;
+  loading: boolean
+  resources: any
+  allResource: Resource[] = []
+
   constructor(
+    private apollo: Apollo,
     private resourceService: ResourceService
   ) {
     this.resources$ = this.resourceService.resources();
@@ -30,8 +37,7 @@ export class ResourcesComponent implements OnInit {
     divRow.style.margin = "20px";
     var divColImg = document.createElement('div');
     divColImg.className = 'col col-sm-2';
-    divColImg.id = 'image';
-
+    divColImg.id = 'image'; 
     var panel = document.createElement('div');
     panel.className = 'col col-lg-14';
     var card = document.createElement('div');
@@ -69,6 +75,16 @@ export class ResourcesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.apollo
+      .watchQuery<allResourcesResponse>({
+        query: allResources
+      })
+      .valueChanges
+      .subscribe((response) => {
+        this.allResource = response.data.resources
+        console.log(this.allResource[0].title)
+      })
+      this.newPanel()
   }
 
 

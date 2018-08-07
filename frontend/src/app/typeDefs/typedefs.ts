@@ -1,4 +1,4 @@
-export type Resource = {
+export class Resource {
   id: string;
   title: string;
   content: string;
