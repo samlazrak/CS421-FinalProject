@@ -30,7 +30,7 @@ newPanel(){
 var div = document.createElement('div');
 div.className = 'container';
 var divRow = document.createElement('div');
-divRow.className = 'row';
+divRow.className = 'row'; 
 divRow.style.margin = "20px";
 var divColImg = document.createElement('div');
 divColImg.className = 'col col-sm-2';
