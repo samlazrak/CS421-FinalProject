@@ -13,6 +13,7 @@ export class ResourcesComponent implements OnInit {
   public post = "";
   public titlePost = "";
   public link = "";
+
   resources$: Observable<Resource[]>;
   constructor(
     private resourceService: ResourceService
