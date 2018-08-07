@@ -1,4 +1,5 @@
 import gql from 'graphql-tag'
+import { Resource } from '../typeDefs/typedefs'
 
 export const allUsers = gql`
     query {
@@ -8,6 +9,19 @@ export const allUsers = gql`
             firstName
             lastName
             email
+        }
+    }
+`
+
+export const allResources = gql`
+    query {
+        resources {
+            id
+            title
+            author {
+                userName
+            }
+            content
         }
     }
 `
@@ -39,5 +53,10 @@ export const registerUser = gql`
 
 export interface registerUserResponse {
     createrUser: any
+    loading: boolean
+}
+
+export interface allResourcesResponse {
+    resources: Resource[]
     loading: boolean
 }

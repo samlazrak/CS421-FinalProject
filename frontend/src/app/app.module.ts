@@ -12,6 +12,7 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { ResourcesComponent } from './pages/resources/resources.component';
 import { ResourceComponent } from './core/components/resource/resource.component';
 import { PagesModule } from './pages/pages.module';
+import { AllResourcesComponent } from './all-resources/all-resources.component';
 
 
 
@@ -21,7 +22,8 @@ import { PagesModule } from './pages/pages.module';
     AppComponent,
     ResourcesComponent,
     ResourceComponent,
-    routingComponents
+    routingComponents,
+    AllResourcesComponent
   ],
   imports: [
     BrowserModule,

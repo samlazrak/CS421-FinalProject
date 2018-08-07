@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-
+import { Apollo } from 'apollo-angular';
 import { Resource } from '../../typeDefs/typedefs';
 import { ResourceService } from '../../core/services/resource.service';
+
+import { allResources, allResourcesResponse } from '../../queries/queries'
 
 @Component({
   selector: 'app-resources',
@@ -11,7 +13,12 @@ import { ResourceService } from '../../core/services/resource.service';
 })
 export class ResourcesComponent implements OnInit {
   resources$: Observable<Resource[]>;
+  loading: boolean
+  resources: any
+  allResource: Resource[] = []
+
   constructor(
+    private apollo: Apollo,
     private resourceService: ResourceService
   ) {
     this.resources$ = this.resourceService.resources();
@@ -66,6 +73,16 @@ innerDiv.appendChild(link);
 document.body.appendChild(div);
 }
   ngOnInit() {
+    this.apollo
+      .watchQuery<allResourcesResponse>({
+        query: allResources
+      })
+      .valueChanges
+      .subscribe((response) => {
+        this.allResource = response.data.resources
+        console.log(this.allResource[0].title)
+      })
+      this.newPanel()
   }
 
 
