@@ -24,3 +24,15 @@
     width: 80%;
     padding: 10px;
 }
+
+input{
+    margin: 5px;
+}
+
+p{
+    overflow: auto;
+}
+
+#image{
+    border: 2px solid black;
+}
