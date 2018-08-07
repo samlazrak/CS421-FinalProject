@@ -36,7 +36,7 @@ export class ResourcesComponent implements OnInit {
     divRow.style.margin = "20px";
     var divColImg = document.createElement('div');
     divColImg.className = 'col col-sm-2';
-    divColImg.id = 'image';
+    divColImg.id = 'image'; 
     var panel = document.createElement('div');
     panel.className = 'col col-lg-14';
     var card = document.createElement('div');
