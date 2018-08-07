@@ -13,7 +13,7 @@ import { allResources, allResourcesResponse } from '../../queries/queries'
 })
 export class ResourcesComponent implements OnInit {
   public post = "";
-  public titlePost = "";
+  public titlePost = "";  
   public link = "";
   resources$: Observable<Resource[]>;
   loading: boolean
