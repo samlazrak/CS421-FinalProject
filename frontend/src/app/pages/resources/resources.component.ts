@@ -38,7 +38,14 @@ export class ResourcesComponent implements OnInit {
     divRow.style.margin = "20px";
     var divColImg = document.createElement('div');
     divColImg.className = 'col col-sm-2';
-    divColImg.id = 'image';
+    var img = document.createElement('img');
+    img.className = 'rounded';
+    img.height = 100;
+    img.width = 100;
+    img.style.marginTop = '30px';
+   
+    // img.src = 'https://thefader-res.cloudinary.com/private_images/w_760,c_limit,f_auto,q_auto:best/GettyImages-968727464_u6ymkm/donald-trump-insults-lebron-james-twitter.jpg';
+    img.src = 'https://png.pngtree.com/svg/20170602/person_1058425.png'
     var panel = document.createElement('div');
     panel.className = 'col col-lg-14';
     var card = document.createElement('div');
@@ -59,6 +66,7 @@ export class ResourcesComponent implements OnInit {
     link.innerHTML = "Go to source";
 
     div.appendChild(divRow);
+    divColImg.appendChild(img);
     divRow.appendChild(divColImg);
     divRow.appendChild(panel);
     panel.appendChild(card);
