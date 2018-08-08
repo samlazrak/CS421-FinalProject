@@ -24,6 +24,7 @@ export const allResources = gql`
                 userName
             }
             content
+            link
         }
     }
 `
@@ -58,14 +59,19 @@ export const registerUser = gql`
 
 export const createPost = gql`
     mutation createPost (
-        $author: ID!, $title: String!, $content: String!
+        $author: ID!, $title: String!, $content: String!, $link: String
     ){
         newResource (
-            author: $author, title: $title, content: $content
+            author: $author, title: $title, content: $content, link: $link
         ){
-            author
+            id
+            author{
+                id
+                userName
+            }
             title
             content
+            link
         }
     }
 `

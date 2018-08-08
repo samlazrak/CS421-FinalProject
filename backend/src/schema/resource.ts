@@ -6,6 +6,7 @@ const typeDefs = `
     id: ID!
     title: String!
     content: String!
+    link: String
     comments: [Comment]
     author: User!
   }
@@ -17,7 +18,7 @@ const typeDefs = `
   
   extend type Mutation {
     newResource (
-      title: String!, content: String!, author: ID!
+      title: String!, content: String!, author: ID!, link: String
     ): Resource
 
     update (
@@ -60,7 +61,8 @@ const resolvers = {
       let resource = new Resource({
         title: args.title,
         content: args.content,
-        author: args.author
+        author: args.author,
+        link: args.link
       })
       return resource.save()
     }

@@ -50,7 +50,7 @@ export class CreateProfileComponent implements OnInit {
         } 
         else {
             console.log(err)
-            alert("This user already exists. Please try again.")
+            alert("Username/Email has already been taken. Please try again.")
 
             window.location.reload()
         }

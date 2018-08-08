@@ -12,7 +12,8 @@ export const ResourceSchema = new Schema({
   content: { type: String, required: true },
   comments: { type: String },
   votes: { type: Number },
-  category: { type: String, required: true },
+  link: { type: String },
+  // category: { type: String, required: true },
   created_date: { type: Date, default: Date.now }
 })
 

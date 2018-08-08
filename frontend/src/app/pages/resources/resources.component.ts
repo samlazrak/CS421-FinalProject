@@ -21,7 +21,6 @@ export class ResourcesComponent implements OnInit {
   titlePost: string = ''
   post: string = ''
   link: string = ''
-  // getAuthor: this.findUser()
 
   constructor(
     private apollo: Apollo,
@@ -77,8 +76,16 @@ export class ResourcesComponent implements OnInit {
   }
 
   shareButton() {
-    if (this.post !== "" && this.titlePost !== "") {
-      this.newPanel(this.titlePost, this.post, this.link);
+    var linkFill: string = 'https://'
+    if (this.post !== "" && this.titlePost !== "" && this.link !== "") {
+      if(!this.link.includes("https://")){
+        linkFill += this.link
+        this.link = linkFill
+      }
+      this.findUser(this.postAuthor, this.link)
+      // this.newPanel(this.titlePost, this.post, this.link);
+    } else if(this.post == "" || this.titlePost == "" || this.link == ""){
+      alert("Please fill in all blank fields.")
     }
   }
 
@@ -94,13 +101,13 @@ export class ResourcesComponent implements OnInit {
       // for(var i = 0; i < this.allResource.length; i++) {
       //   this.title = this.allResource[i].title
       // }
-      // let test = this.allResource[0].title
-      // console.log('Le Test: ',test)
-      return this.allResource
+      let test = this.allResource[0]
+      console.log('Le Test: ',test)
+      // return this.allResource
       for (var i = 0; i < this.allResource.length; i++) {
-        this.newPanel(this.allResource[i].title, this.allResource[i].id, this.allResource[i].comments);
+        this.newPanel(this.allResource[i].title, this.allResource[i].content, this.allResource[i].link);
         //console.log(i);
-        //this.shareButton();
+        this.shareButton();
       }
     })
     // console.log()
@@ -111,22 +118,25 @@ export class ResourcesComponent implements OnInit {
     //this.newPanel()
   // }
 
-createPost(nim) {
+createPost(nameId, link) {
   this.apollo
     .mutate<createPostResponse> ({
       mutation: createPost,
       variables: {
-        author: this.findUser(this.postAuthor),
+        author: String(nameId),
         title: this.titlePost,
-        content: this.post
+        content: this.post,
+        link: link
       }
     }).subscribe(({data}) => {
       console.log(data)
+      window.location.reload()
+      // console.log(response.data)
       // return response
     })
 }
 
-findUser(nim) {
+findUser(nim, link) {
   this.apollo
     .watchQuery<any> ({
       query: User,
@@ -138,9 +148,9 @@ findUser(nim) {
     .subscribe((response) => {
       let name = response.data.userNim.id
       console.log(name)
-      // this.createPost(response.data.userNim.id)
+      this.createPost(name, link)
 
-      return name
+      // return name
     })
 }
 
