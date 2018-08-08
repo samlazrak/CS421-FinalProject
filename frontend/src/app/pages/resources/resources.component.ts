@@ -32,7 +32,8 @@ export class ResourcesComponent implements OnInit {
 
 
   //This creates a new post for the user
-  newPanel() {
+  newPanel(titleP: string, commentP: string, linkP: string) {
+
     var div = document.createElement('div');
     div.className = 'container';
     var divRow = document.createElement('div');
@@ -40,41 +41,45 @@ export class ResourcesComponent implements OnInit {
     divRow.style.margin = "20px";
     var divColImg = document.createElement('div');
     divColImg.className = 'col col-sm-2';
-    divColImg.id = 'image'; 
+    divColImg.id = 'image';
     var panel = document.createElement('div');
     panel.className = 'col col-lg-14';
     var card = document.createElement('div');
     card.className = 'card';
     var cardHeader = document.createElement('div');
     cardHeader.className = 'card-header';
-    cardHeader.innerHTML = this.titlePost;
+    cardHeader.innerHTML = titleP;
     var cardBody = document.createElement('div');
     cardBody.className = 'card-body';
     var innerDiv = document.createElement('div');
     var comment = document.createElement('p');
     comment.className = 'card-text';
-    comment.innerHTML = this.post;
+    comment.innerHTML = commentP;
     var link = document.createElement('a');
     link.className = 'btn btn-primary';
-    link.href = this.link;
+    link.href = linkP;
     console.log("This is the link" + this.link);
     link.innerHTML = "Go to source";
-    if (this.post !== "" && this.titlePost !== "") {
 
-      div.appendChild(divRow);
-      divRow.appendChild(divColImg);
-      divRow.appendChild(panel);
-      panel.appendChild(card);
-      card.appendChild(cardHeader);
-      card.appendChild(cardBody);
-      cardBody.appendChild(innerDiv);
-      innerDiv.appendChild(comment);
-      innerDiv.appendChild(link);
+    div.appendChild(divRow);
+    divRow.appendChild(divColImg);
+    divRow.appendChild(panel);
+    panel.appendChild(card);
+    card.appendChild(cardHeader);
+    card.appendChild(cardBody);
+    cardBody.appendChild(innerDiv);
+    innerDiv.appendChild(comment);
+    innerDiv.appendChild(link);
 
-      document.body.appendChild(div);
-    }
+    document.body.appendChild(div);
     // console.log("This is the post: " + this.post);
     // console.log("This is the title of the post: " + this.titlePost);
+  }
+
+  shareButton() {
+    if (this.post !== "" && this.titlePost !== "") {
+      this.newPanel(this.titlePost, this.post, this.link);
+    }
   }
 
   ngOnInit() {
@@ -89,13 +94,22 @@ export class ResourcesComponent implements OnInit {
       // for(var i = 0; i < this.allResource.length; i++) {
       //   this.title = this.allResource[i].title
       // }
-      let test = this.allResource[0].title
-      console.log('Le Test: ',test)
+      // let test = this.allResource[0].title
+      // console.log('Le Test: ',test)
       return this.allResource
+      for (var i = 0; i < this.allResource.length; i++) {
+        this.newPanel(this.allResource[i].title, this.allResource[i].id, this.allResource[i].comments);
+        //console.log(i);
+        //this.shareButton();
+      }
     })
-    console.log()
-      this.newPanel()
-  }
+    // console.log()
+      // this.newPanel()
+      }
+
+
+    //this.newPanel()
+  // }
 
 createPost(nim) {
   this.apollo
