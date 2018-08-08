@@ -36,7 +36,7 @@ export class CreateProfileComponent implements OnInit {
     }).subscribe((response) => {
       console.log(response)
 
-        this.relocate
+        this.relocate()
 
     }, (err) => {
         if(!this.userName){

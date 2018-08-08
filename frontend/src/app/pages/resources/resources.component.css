@@ -36,3 +36,6 @@ p{
 #image{
     border: 2px solid black;
 }
+
+span { font-size: 3em;}
+span b { font-size: 60%; }

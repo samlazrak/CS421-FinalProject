@@ -1,6 +1,7 @@
 import gql from 'graphql-tag'
 import { Resource } from '../typeDefs/typedefs'
 
+// get all users
 export const allUsers = gql`
     query {
         users {
@@ -13,6 +14,7 @@ export const allUsers = gql`
     }
 `
 
+// get all resources
 export const allResources = gql`
     query {
         resources {
@@ -26,10 +28,13 @@ export const allResources = gql`
     }
 `
 
+// find a single user by userName
 export const User = gql`
-    query($userName: String!) {
-        user(userName: $userName) {
+    query findUser($userName: String!) {
+        userNim(userName: $userName) {
+            id
             userName
+            email
         }
     }
 `
@@ -51,6 +56,20 @@ export const registerUser = gql`
     }
 `
 
+export const createPost = gql`
+    mutation createPost (
+        $author: ID!, $title: String!, $content: String!
+    ){
+        newResource (
+            author: $author, title: $title, content: $content
+        ){
+            author
+            title
+            content
+        }
+    }
+`
+
 export interface registerUserResponse {
     createrUser: any
     loading: boolean
@@ -59,4 +78,8 @@ export interface registerUserResponse {
 export interface allResourcesResponse {
     resources: Resource[]
     loading: boolean
+}
+
+export interface createPostResponse {
+    newResource: any
 }

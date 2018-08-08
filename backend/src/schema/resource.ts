@@ -60,7 +60,6 @@ const resolvers = {
       let resource = new Resource({
         title: args.title,
         content: args.content,
-        comments: args.comments,
         author: args.author
       })
       return resource.save()

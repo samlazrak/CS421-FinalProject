@@ -6,11 +6,12 @@
 
       <div class="panel panel-default">
         <div class="panel-body">
+          <input type="text" class="form-control" id="postAuthor" placeholder="Author" [(ngModel)]='postAuthor' required>
           <input type="text" class="form-control" id="postTitle" placeholder="Title" [(ngModel)]='titlePost' required>
           <input type="text" class="form-control" placeholder="Make a post" [(ngModel)]="post" required>
           <input type="text" class="form-control" id="link" placeholder="link" [(ngModel)]='link'>
           <div class="pull-right">
-            <button type="button" class="btn btn-success" style="margin-top: 5px;" (click)='newPanel()'> Share </button>
+            <button type="button" class="btn btn-success" style="margin-top: 5px;" (click)='createPost()'> Share </button>
           </div>
         </div>
         <div class="panel-footer">

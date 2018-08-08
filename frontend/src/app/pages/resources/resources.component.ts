@@ -4,7 +4,7 @@ import { Apollo } from 'apollo-angular';
 import { Resource } from '../../typeDefs/typedefs';
 import { ResourceService } from '../../core/services/resource.service';
 
-import { allResources, allResourcesResponse } from '../../queries/queries'
+import { User,allResources, createPost, allResourcesResponse, createPostResponse } from '../../queries/queries'
 
 @Component({
   selector: 'app-resources',
@@ -12,13 +12,16 @@ import { allResources, allResourcesResponse } from '../../queries/queries'
   styleUrls: ['./resources.component.css']
 })
 export class ResourcesComponent implements OnInit {
-  public post = "";
-  public titlePost = "";
-  public link = "";
+  // public post = "";
+  // public titlePost = "";
+  // public link = "";
   resources$: Observable<Resource[]>;
-  loading: boolean
-  resources: any
   allResource: Resource[] = []
+  postAuthor: string = ''
+  titlePost: string = ''
+  post: string = ''
+  link: string = ''
+  // getAuthor: this.findUser()
 
   constructor(
     private apollo: Apollo,
@@ -26,6 +29,7 @@ export class ResourcesComponent implements OnInit {
   ) {
     this.resources$ = this.resourceService.resources();
   }
+
 
   //This creates a new post for the user
   newPanel() {
@@ -81,12 +85,49 @@ export class ResourcesComponent implements OnInit {
       .valueChanges
       .subscribe((response) => {
         this.allResource = response.data.resources
-        console.log(this.allResource[0].title)
-      })
+        console.log(this.allResource)
+      // for(var i = 0; i < this.allResource.length; i++) {
+      //   this.title = this.allResource[i].title
+      // }
+      let test = this.allResource[0].title
+      console.log('Le Test: ',test)
+      return this.allResource
+    })
+    console.log()
       this.newPanel()
   }
 
+createPost(nim) {
+  this.apollo
+    .mutate<createPostResponse> ({
+      mutation: createPost,
+      variables: {
+        author: this.findUser(this.postAuthor),
+        title: this.titlePost,
+        content: this.post
+      }
+    }).subscribe(({data}) => {
+      console.log(data)
+      // return response
+    })
+}
 
+findUser(nim) {
+  this.apollo
+    .watchQuery<any> ({
+      query: User,
+      variables: {
+        userName: nim
+      }
+    })
+    .valueChanges
+    .subscribe((response) => {
+      let name = response.data.userNim.id
+      console.log(name)
+      // this.createPost(response.data.userNim.id)
 
+      return name
+    })
+}
 
 }

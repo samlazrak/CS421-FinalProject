@@ -16,6 +16,7 @@ const typeDefs = `
   extend type Query {
     users: [User]
     user(id: ID!): User
+    userNim(userName: String!): User
   }
 
   extend type Mutation {
@@ -35,6 +36,9 @@ const resolvers = {
     },
     user: (_, args) => {
       return User.findById(args.id)
+    },
+    userNim: (_, args) => {
+      return User.findOne(args)
     }
   },
   User: {
