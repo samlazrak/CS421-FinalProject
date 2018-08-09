@@ -36,9 +36,6 @@ const resolvers = {
         }
     },
     Resource: {
-        // comments: (_) => {
-        //     return userComment.findById(  _.comment )
-        // }
         comments: (_) => {
             return userComment.find({ resource: _.id })
         }

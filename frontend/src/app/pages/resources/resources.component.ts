@@ -4,7 +4,7 @@ import { Apollo } from 'apollo-angular';
 import { Resource } from '../../typeDefs/typedefs';
 import { ResourceService } from '../../core/services/resource.service';
 
-import { allResources, allResourcesResponse } from '../../queries/queries'
+import { User,allResources, createPost, allResourcesResponse, createPostResponse } from '../../queries/queries'
 
 @Component({
   selector: 'app-resources',
@@ -12,14 +12,12 @@ import { allResources, allResourcesResponse } from '../../queries/queries'
   styleUrls: ['./resources.component.css']
 })
 export class ResourcesComponent implements OnInit {
-  public post = "";
-  public titlePost = "";
-  public link = "";
-
   resources$: Observable<Resource[]>;
-  loading: boolean
-  resources: any
   allResource: Resource[] = []
+  postAuthor: string = ''
+  titlePost: string = ''
+  post: string = ''
+  link: string = ''
 
   constructor(
     private apollo: Apollo,
@@ -27,6 +25,7 @@ export class ResourcesComponent implements OnInit {
   ) {
     this.resources$ = this.resourceService.resources();
   }
+
 
   //This creates a new post for the user
   newPanel(titleP: string, commentP: string, linkP: string) {
@@ -77,13 +76,16 @@ export class ResourcesComponent implements OnInit {
     innerDiv.appendChild(link);
 
     document.body.appendChild(div);
-    // console.log("This is the post: " + this.post);
-    // console.log("This is the title of the post: " + this.titlePost);
   }
 
   shareButton() {
-    if (this.post !== "" && this.titlePost !== "") {
-      this.newPanel(this.titlePost, this.post, this.link);
+    var linkFill: string = 'https://'
+    if (this.post !== "" && this.titlePost !== "" && this.link !== "") {
+      if(!this.link.includes("https://")){
+        linkFill += this.link
+        this.link = linkFill
+      }
+      this.findUser(this.postAuthor, this.link)
     }
   }
 
@@ -96,18 +98,43 @@ export class ResourcesComponent implements OnInit {
       .subscribe((response) => {
         this.allResource = response.data.resources
         console.log(this.allResource)
-        for (var i = 0; i < this.allResource.length; i++) {
-          this.newPanel(this.allResource[i].title, this.allResource[i].id, this.allResource[i].comments);
-          //console.log(i);
-          //this.shareButton();
-        }
+      for (var i = 0; i < this.allResource.length; i++) {
+        this.newPanel(this.allResource[i].title, this.allResource[i].content, this.allResource[i].link);
+        this.shareButton();
+      }
       })
+    }
 
+createPost(nameId, link) {
+  this.apollo
+    .mutate<createPostResponse> ({
+      mutation: createPost,
+      variables: {
+        author: String(nameId),
+        title: this.titlePost,
+        content: this.post,
+        link: link
+      }
+    }).subscribe(({data}) => {
+      console.log(data)
+      window.location.reload()
+    })
+}
 
-    //this.newPanel()
-  }
-
-
-
+findUser(nim, link) {
+  this.apollo
+    .watchQuery<any> ({
+      query: User,
+      variables: {
+        userName: nim
+      }
+    })
+    .valueChanges
+    .subscribe((response) => {
+      let name = response.data.userNim.id
+      console.log(name)
+      this.createPost(name, link)
+    })
+}
 
 }

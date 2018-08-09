@@ -1,4 +1,3 @@
-import { find, filter } from 'lodash'
 const Resource = require('../models/Resource')
 
 const typeDefs = `
@@ -6,6 +5,7 @@ const typeDefs = `
     id: ID!
     title: String!
     content: String!
+    link: String
     comments: [Comment]
     author: User!
   }
@@ -17,7 +17,7 @@ const typeDefs = `
   
   extend type Mutation {
     newResource (
-      title: String!, content: String!, author: ID!
+      title: String!, content: String!, author: ID!, link: String
     ): Resource
 
     update (
@@ -25,16 +25,6 @@ const typeDefs = `
     ): Resource
   }
   `
-
-/* const resolvers = {
-  Query: {
-    resources: () => api.ResourceApi.getResources
-  },
-  Mutation: {
-    updateResource: api.ResourceApi.updateResource
-  }
-} */
-
 
 const resolvers = {
   Query: {
@@ -60,8 +50,8 @@ const resolvers = {
       let resource = new Resource({
         title: args.title,
         content: args.content,
-        comments: args.comments,
-        author: args.author
+        author: args.author,
+        link: args.link
       })
       return resource.save()
     }
@@ -69,43 +59,3 @@ const resolvers = {
 }
 
 export default { typeDefs, resolvers }
-
-
-
-
-
-
-/*
-
-Unused/Testing/Reference Code:
-
-update: (root, { id, title, content, comments, votes }) => {
-  const i = resources.findIndex(e => e.id === id);
-    if (i >= 0) {
-      const resource = resources[i];
-      resource.id = id
-      resource.title = title;
-      resource.content = content;
-      resource.comments = comments;
-      resource.votes = votes;
-      return resource;
-    }
-    return null;
-    
-    resources: (_) => {
-  return resources;
-},
-
-user: (_, { id }) => find(users, { id: userId })
-},
-User: {
-  resources(userId) {
-    return filter(resources, { userId: userId.resources.id })
-  }
-  
-  User: {
-      resources: (_, args) => { 
-      return User.findById()
-    },
-
-  */

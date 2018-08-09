@@ -3,6 +3,7 @@ export class Resource {
   title: string;
   content: string;
   comments: string;
+  link: string;
 }
 
 export type Query = {
