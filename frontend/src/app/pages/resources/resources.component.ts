@@ -98,7 +98,7 @@ export class ResourcesComponent implements OnInit {
       .subscribe((response) => {
         this.allResource = response.data.resources
         console.log(this.allResource)
-      for (var i = 0; i < this.allResource.length; i++) {
+      for (var i = this.allResource.length-1; i >= 0; i--) {
         this.newPanel(this.allResource[i].title, this.allResource[i].content, this.allResource[i].link);
         this.shareButton();
       }
