@@ -7,14 +7,12 @@ import { Resource } from "../typeDefs/typedefs"
   <div>
     <h2 ng-init="newPanel()"></h2>
   </div>
-  `,
-  styleUrls: ['./all-resources.component.css']
+  `
 })
 export class AllResourcesComponent implements OnInit {
   @Input()
   resauce: Object
 
-    // public: string = ''
   constructor() { }
 
   ngOnInit() {

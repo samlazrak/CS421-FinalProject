@@ -12,9 +12,6 @@ import { User,allResources, createPost, allResourcesResponse, createPostResponse
   styleUrls: ['./resources.component.css']
 })
 export class ResourcesComponent implements OnInit {
-  // public post = "";
-  // public titlePost = "";
-  // public link = "";
   resources$: Observable<Resource[]>;
   allResource: Resource[] = []
   postAuthor: string = ''
@@ -71,8 +68,6 @@ export class ResourcesComponent implements OnInit {
     innerDiv.appendChild(link);
 
     document.body.appendChild(div);
-    // console.log("This is the post: " + this.post);
-    // console.log("This is the title of the post: " + this.titlePost);
   }
 
   shareButton() {
@@ -83,9 +78,6 @@ export class ResourcesComponent implements OnInit {
         this.link = linkFill
       }
       this.findUser(this.postAuthor, this.link)
-      // this.newPanel(this.titlePost, this.post, this.link);
-    } else if(this.post == "" || this.titlePost == "" || this.link == ""){
-      alert("Please fill in all blank fields.")
     }
   }
 
@@ -98,25 +90,12 @@ export class ResourcesComponent implements OnInit {
       .subscribe((response) => {
         this.allResource = response.data.resources
         console.log(this.allResource)
-      // for(var i = 0; i < this.allResource.length; i++) {
-      //   this.title = this.allResource[i].title
-      // }
-      let test = this.allResource[0]
-      console.log('Le Test: ',test)
-      // return this.allResource
       for (var i = 0; i < this.allResource.length; i++) {
         this.newPanel(this.allResource[i].title, this.allResource[i].content, this.allResource[i].link);
-        //console.log(i);
         this.shareButton();
       }
-    })
-    // console.log()
-      // this.newPanel()
-      }
-
-
-    //this.newPanel()
-  // }
+      })
+    }
 
 createPost(nameId, link) {
   this.apollo
@@ -131,8 +110,6 @@ createPost(nameId, link) {
     }).subscribe(({data}) => {
       console.log(data)
       window.location.reload()
-      // console.log(response.data)
-      // return response
     })
 }
 
@@ -149,8 +126,6 @@ findUser(nim, link) {
       let name = response.data.userNim.id
       console.log(name)
       this.createPost(name, link)
-
-      // return name
     })
 }
 

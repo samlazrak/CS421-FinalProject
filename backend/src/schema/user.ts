@@ -26,9 +26,6 @@ const typeDefs = `
   }
 `
 
-
-
-
 const resolvers = {
   Query: {
     users: (_) => {
@@ -71,24 +68,3 @@ const resolvers = {
 }
 
 export default { typeDefs, resolvers }
-
-
-
-
-
-/* 
-Unused/Testing/Reference Code:
-
-user: (_, { id }) => {
-  return users.find(user => user.id === id)
-}
-
-users: (_) => {
-  return users
-},
-
-user:(_, { id }) => {
-  return find(users, { id })
-},
-
-*/
