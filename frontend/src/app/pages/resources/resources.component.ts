@@ -14,7 +14,7 @@ import { User,allResources, createPost, allResourcesResponse, createPostResponse
 export class ResourcesComponent implements OnInit {
   resources$: Observable<Resource[]>;
   allResource: Resource[] = []
-  postAuthor: string = ''
+  postAuthor: string = 'dev'
   titlePost: string = ''
   post: string = ''
   link: string = ''
@@ -117,6 +117,8 @@ createPost(nameId, link) {
       }
     }).subscribe(({data}) => {
       console.log(data)
+
+      // Comment this out for faster posting, instead of forced page refresh (posts will not show on button press)
       window.location.reload()
     })
 }
