@@ -14,7 +14,7 @@ import { User,allResources, createPost, allResourcesResponse, createPostResponse
 export class ResourcesComponent implements OnInit {
   resources$: Observable<Resource[]>;
   allResource: Resource[] = []
-  postAuthor: string = 'dev'
+  postAuthor: string = 'JPhan'
   titlePost: string = ''
   post: string = ''
   link: string = ''
